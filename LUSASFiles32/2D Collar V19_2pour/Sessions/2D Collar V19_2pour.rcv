@@ -1,0 +1,135 @@
+$ENGINE=VBScript
+' LUSAS Modeller session file
+' Created by LUSAS 19.1-3c4 - Modeller Version 19.1.1651.39058
+' Created at 09:05 on Thursday, March 31 2022
+' (C) Finite Element Analysis Ltd 2022
+'
+call setCreationVersion("19.1-3c4, 19.1.1651.39058")
+'
+
+'*** Modify visible objects
+
+set attr = database.getAttribute("Environmental", "formwork_left")
+call assignment.setIgnoreAll()
+call assignment.setLoadset("Formwork")
+call selection.add(attr, assignment)
+set attr = nothing
+
+'selection now contains:;L22;L23
+
+'*** Modify visible objects
+
+call selection.remove("All")
+set attr = database.getAttribute("Environmental", "formwork_top")
+call assignment.setIgnoreAll()
+call assignment.setLoadset("Formwork")
+call selection.add(attr, assignment)
+call assignment.setIgnoreAll()
+call assignment.setLoadset("1st and 2nd pour joint")
+call selection.add(attr, assignment)
+set attr = nothing
+
+'selection now contains:;L27;L20
+
+'*** Modify visualisation
+
+call view.attributes.add("Loading", "Outside")
+
+'*** Modify visible objects
+
+call selection.remove("All")
+set attr = database.getAttribute("Environmental", "Outside")
+call assignment.setIgnoreAll()
+call assignment.setLoadset("After Formwork")
+call selection.add(attr, assignment)
+set attr = nothing
+
+'selection now contains:;L22;L23;L27
+
+'*** Modify selection
+
+call selection.remove("All")
+
+'*** Modify loadcase/control
+
+set loadset = database.getLoadset("PlacingTemp beam", 0)
+call view.setActiveLoadset(loadset)
+set loadset = nothing
+
+'*** Modify loadcase/control
+
+set loadset = database.getLoadset("After Formwork", 0)
+call view.setActiveLoadset(loadset)
+set loadset = nothing
+
+'*** Modify loadcase/control
+
+set loadset = database.getLoadset("Formwork", 0)
+call view.setActiveLoadset(loadset)
+set loadset = nothing
+
+'*** Modify loadcase/control
+
+set loadset = database.getLoadset("Formwork + After Formwork", 0)
+call view.setActiveLoadset(loadset)
+set loadset = nothing
+
+'*** Modify loadcase/control
+
+set loadset = database.getLoadset("PlacingTemp beam", 0)
+call view.setActiveLoadset(loadset)
+set loadset = nothing
+
+'*** Modify loadcase/control
+
+set loadset = database.getLoadset("Formwork", 0)
+call view.setActiveLoadset(loadset)
+set loadset = nothing
+
+'*** Modify visible objects
+
+set attr = database.getAttribute("Environmental", "formwork_left")
+call assignment.setIgnoreAll()
+call assignment.setLoadset("Formwork")
+call assignment.setLoadFactor(1.0)
+call selection.add(attr, assignment)
+set attr = nothing
+
+'selection now contains:;L22;L23
+
+'*** Modify visible objects
+
+call selection.remove("All")
+set attr = database.getAttribute("Environmental", "formwork_top")
+call assignment.setIgnoreAll()
+call assignment.setLoadset("Formwork")
+call assignment.setLoadFactor(1.0)
+call selection.add(attr, assignment)
+set attr = nothing
+
+'selection now contains:;L27
+
+'*** Modify visible objects
+
+call selection.remove("All")
+set attr = database.getAttribute("Environmental", "Outside")
+call assignment.setIgnoreAll()
+call assignment.setLoadset("After Formwork")
+call assignment.setLoadFactor(1.0)
+call selection.add(attr, assignment)
+set attr = nothing
+
+'selection now contains:;L22;L23;L27
+
+'*** Modify loadcase/control
+
+set loadset = database.getLoadset("After Formwork", 0)
+call view.setActiveLoadset(loadset)
+set loadset = nothing
+
+'*** Modify loadcase/control
+
+set loadset = database.getLoadset("Formwork", 0)
+call view.setActiveLoadset(loadset)
+set loadset = nothing
+

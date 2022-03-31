@@ -1,0 +1,13 @@
+$ENGINE=VBScript
+' LUSAS Modeller session file
+' Created by LUSAS 19.1-3c4 - Modeller Version 19.1.1651.39058
+' Created at 09:05 on Thursday, March 31 2022
+' (C) Finite Element Analysis Ltd 2022
+'
+call setCreationVersion("19.1-3c4, 19.1.1651.39058")
+'
+
+'*** Open database
+
+call database.save()
+
